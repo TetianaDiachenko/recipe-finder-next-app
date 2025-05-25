@@ -1,17 +1,17 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const SearchPage = () => {
   const router = useRouter();
 
-  const [query, setQuery] = useState('');
-  const [cuisine, setCuisine] = useState('');
-  const [maxTime, setMaxTime] = useState('');
+  const [query, setQuery] = useState("");
+  const [cuisine, setCuisine] = useState("");
+  const [maxTime, setMaxTime] = useState("");
   const [isNextEnabled, setIsNextEnabled] = useState(false);
 
   useEffect(() => {
-    if (query.trim() !== '' || cuisine !== '' || maxTime.trim() !== '') {
+    if (query.trim() !== "" || cuisine !== "" || maxTime.trim() !== "") {
       setIsNextEnabled(true);
     } else {
       setIsNextEnabled(false);
@@ -28,9 +28,9 @@ const SearchPage = () => {
           e.preventDefault();
           if (isNextEnabled) {
             const params = new URLSearchParams();
-            if (query) params.append('query', query);
-            if (cuisine) params.append('cuisine', cuisine);
-            if (maxTime) params.append('maxTime', maxTime);
+            if (query) params.append("query", query);
+            if (cuisine) params.append("cuisine", cuisine);
+            if (maxTime) params.append("maxTime", maxTime);
             router.push(`/recipes?${params.toString()}`);
           }
         }}
@@ -85,7 +85,9 @@ const SearchPage = () => {
           type="submit"
           disabled={!isNextEnabled}
           className={`w-full py-2 rounded text-white font-semibold ${
-            isNextEnabled ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-gray-400 cursor-not-allowed'
+            isNextEnabled
+              ? "bg-indigo-600 hover:bg-indigo-700"
+              : "bg-gray-400 cursor-not-allowed"
           }`}
         >
           Next

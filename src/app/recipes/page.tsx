@@ -1,7 +1,7 @@
 // src/app/recipes/page.tsx
 
-import { Suspense } from "react";
-import RecipesList from "./RecipesList";
+import { Suspense } from 'react';
+import RecipesList from './RecipesList';
 
 type Recipe = {
   id: number;
@@ -30,20 +30,20 @@ async function fetchRecipes(
   cuisine?: string,
   maxReadyTime?: string
 ): Promise<Recipe[]> {
-  const baseUrl = "https://api.spoonacular.com/recipes/complexSearch";
+  const baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
   const params = new URLSearchParams();
 
-  if (API_KEY) params.append("apiKey", API_KEY);
-  if (query) params.append("query", query);
-  if (cuisine) params.append("cuisine", cuisine);
-  if (maxReadyTime) params.append("maxReadyTime", maxReadyTime);
+  if (API_KEY) params.append('apiKey', API_KEY);
+  if (query) params.append('query', query);
+  if (cuisine) params.append('cuisine', cuisine);
+  if (maxReadyTime) params.append('maxReadyTime', maxReadyTime);
 
   const url = `${baseUrl}?${params.toString()}`;
 
   const res = await fetch(url, { next: { revalidate: 60 } });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch recipes");
+    throw new Error('Failed to fetch recipes');
   }
 
   const data: RecipesResponse = await res.json();
@@ -81,5 +81,4 @@ export default async function RecipesPage({ searchParams }: Props) {
       </Suspense>
     </main>
   );
-
 }

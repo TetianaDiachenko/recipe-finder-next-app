@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 type RecipeDetails = {
   id: number;
@@ -24,7 +24,7 @@ async function fetchRecipeDetails(id: string): Promise<RecipeDetails> {
   const res = await fetch(url, { next: { revalidate: 60 } });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch recipe details");
+    throw new Error('Failed to fetch recipe details');
   }
 
   return res.json();
@@ -53,7 +53,10 @@ export default async function RecipeDetailsPage({ params }: PageProps) {
         height={400}
         className="rounded-lg mb-6"
       />
-      <p className="mb-4" dangerouslySetInnerHTML={{ __html: recipe.summary }} />
+      <p
+        className="mb-4"
+        dangerouslySetInnerHTML={{ __html: recipe.summary }}
+      />
       <ul className="list-disc list-inside text-gray-700">
         <li>Час приготування: {recipe.readyInMinutes} хв</li>
         <li>Порції: {recipe.servings}</li>
