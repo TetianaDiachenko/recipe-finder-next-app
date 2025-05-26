@@ -30,7 +30,7 @@ const SearchPage = () => {
             const params = new URLSearchParams();
             if (query) params.append("query", query);
             if (cuisine) params.append("cuisine", cuisine);
-            if (maxTime) params.append("maxTime", maxTime);
+            if (maxTime) params.append("maxReadyTime", maxTime);
             router.push(`/recipes?${params.toString()}`);
           }
         }}
