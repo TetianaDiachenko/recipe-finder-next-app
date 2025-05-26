@@ -51,7 +51,7 @@ async function fetchRecipes(
 }
 
 export default async function RecipesPage({ searchParams }: Props) {
-  const { query, cuisine, maxReadyTime } = searchParams || {};
+  const { query, cuisine, maxReadyTime } = await searchParams || {};
 
   let recipes: Recipe[] = [];
 
